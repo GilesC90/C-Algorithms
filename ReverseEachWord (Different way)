@@ -1,0 +1,51 @@
+using System;
+using System.Text;
+
+namespace Algorithms
+{
+    class Program
+    {
+        // Create a function that reverses each word in a sentence
+        // Input: string
+        // Output: new string with each word reversed
+        // Assumptions: no punctuation in the string, each
+        // word separated by spaces
+        // Casing should remain the same.
+        static String ReverseEachWord(String input)
+        {
+            // check to see if input is null or empty
+            if (string.IsNullOrEmpty(input))
+            {
+                return input;
+            }
+            // Utilize StringBuilder to mutate our input since strings
+            // inherently are immutable 
+            StringBuilder reversed = new StringBuilder(input.Length);
+            
+            // create for loop to navigate backwards through our
+            // input string
+            for (int i = input.Length - 1; i >= 0; i--)
+            {
+                // append those reversed characters onto our newly
+                // created variable
+                reversed.Append(input[i]);
+            }
+            // convert our StringBuilder variable back into a string
+            return reversed.ToString();
+        }
+
+        static void Main(string [] args)
+        {
+            System.Console.WriteLine(ReverseEachWord("Hello World"));
+            // // returns "dlroW olleH"
+            System.Console.WriteLine(ReverseEachWord(null));
+            // // returns a blank
+            System.Console.WriteLine(ReverseEachWord("racer racecar madam"));
+            // // returns "racer racecar madam"
+            System.Console.WriteLine(ReverseEachWord("what can I do today"));
+            // // returns "yadot od I nac tahw"
+            System.Console.WriteLine(ReverseEachWord(" "));
+            // // returns a blank
+        }
+    }
+}
