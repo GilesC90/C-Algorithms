@@ -1,0 +1,44 @@
+namespace Algorithms
+{
+    class Program
+    {
+        static Boolean LinearSearch(int [] input, int n)
+        {
+            foreach (int current in input)
+            {
+                if (n == current)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        static int? LinearSearch2(int [] input, int n)
+        {
+            foreach (int current in input)
+            {
+                if (n == current)
+                {
+                    return n;
+                }
+            }
+            return null;
+        }
+
+        static void Main(string [] args)
+        {
+            int [] arr = {1, 2, 3, 4, 5, 6};
+            System.Console.WriteLine(LinearSearch(arr, 4));
+
+            // Can also be accomplished using the built-in 
+            // function Find() or FindAll(), printing with 
+            // the Array.ForEach() function.
+            int item = Array.Find(arr, e => e == 3);
+            System.Console.WriteLine(item);
+
+            
+            int[] items = Array.FindAll(arr, e => e >= 5);
+            Array.ForEach(items, Console.WriteLine);
+        }
+    }
+}
