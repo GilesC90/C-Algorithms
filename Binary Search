@@ -1,0 +1,59 @@
+namespace Algorithms
+{
+    class Program
+    {
+        // Binary Search is a divide and conquer algorithm where
+        // in each step it halves the number of elements it has
+        // to search through.  Linear search: no assumptions, O(n) time
+        // Binary search: sorted assumption, O(log(n)) time.
+        static Boolean BinarySearch(int [] inputArray, int item)
+        {
+            // The first step is to create variables for the min and 
+            // max indicies.  This helps us bucket the inner array we
+            // are searching through.
+            int min = 0;
+            int max = inputArray.Length - 1;
+
+            // create a while that allows us to serach for the the item
+            // so long our min variable is less than or equal to our max
+            while (min <= max)
+            {
+                // Create a midpoint in loop using the min and max to start
+                // our search. min + max / 2
+                int mid = (min + max) / 2;
+                if (item == inputArray[mid])
+                {
+                    return true;
+                }
+                // if the item does not equal our original midpoint, we need to 
+                // determine which half of the array we should begin to check.
+                // If the item is less than our starting midpoint, we need to 
+                // adjust our max to now focus on the first half of our array.
+                else if (item < inputArray[mid])
+                {
+                    max = mid - 1;
+                }
+                // If the item is greater than our starting midpoint, we need to 
+                // adjust our min to now focus on the second half of our array.
+                else
+                {
+                    min = mid + 1;
+                }
+
+            }
+
+            return false;
+        }
+        static void Main(string [] args)
+        {
+            int [] arr = {1, 2, 3, 4, 5, 6};
+            System.Console.WriteLine(BinarySearch(arr, 5));
+            // Can also be accomplished using the built-in 
+            // function BinarySearch(). The built-in function 
+            // will return the index position of the item
+            // if it is found inside of the array and a 
+            // sentinal value if it isnt found.
+            System.Console.WriteLine(Array.BinarySearch(arr, 9));
+        }
+    }
+}
